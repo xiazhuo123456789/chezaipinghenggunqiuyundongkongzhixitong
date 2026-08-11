@@ -37,20 +37,6 @@
 2.
 3.
 
-#### 项目结构
-
-  mspm0g3507 2026 H/
-  ├── encoder.c/h      — 电机 PWM + 编码器驱动
-  ├── tracking.c/h     — 5 路红外循迹 PD 控制
-  ├── servo.c/h        — 舵机高精度 PWM (50Hz)
-  ├── uart.c/h         — K230 串口协议解析
-  ├── key.c/h          — 按键消抖状态机
-  ├── oled.c/h         — SSD1306 OLED 驱动
-  ├── pages.c/h        — 页面表驱动菜单系统
-  ├── task_manager.c/h — 任务配置表 + 稳球状态机
-  ├── init.c/h         — 统一初始化入口
-  ├── main.c           — 主文件 (60 行)
-
 #### 参与贡献
 
 1.  Fork 本仓库
