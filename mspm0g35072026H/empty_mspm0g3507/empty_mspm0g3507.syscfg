@@ -1,0 +1,57 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ */
+//@cliArgs --device "MSPM0G350X" --package "LQFP-64(PM)" --part "Default"
+//@v2CliArgs --device "MSPM0G3507" --package "LQFP-64(PM)"
+
+/**
+ * Import the modules used in this configuration.
+ */
+const GPIO    = scripting.addModule("/ti/driverlib/GPIO", {}, false);
+const GPIO1   = GPIO.addInstance();
+const SYSCTL  = scripting.addModule("/ti/driverlib/SYSCTL");
+const Board   = scripting.addModule("/ti/driverlib/Board", {}, false);
+
+/**
+ * ========= GPIO: Motor Direction Pins (推挽输出) =========
+ * AIN1 = PB9   (IOMUX_PINCM26)
+ * AIN2 = PB12  (IOMUX_PINCM29)
+ * BIN1 = PB7   (IOMUX_PINCM24)
+ * BIN2 = PB6   (IOMUX_PINCM23)
+ */
+GPIO1.$name                         = "MOTOR_DIR";
+GPIO1.port                          = "PORTB";
+GPIO1.associatedPins.create(4);
+GPIO1.associatedPins[0].$name       = "AIN1";
+GPIO1.associatedPins[0].assignedPin = "9";
+GPIO1.associatedPins[1].$name       = "AIN2";
+GPIO1.associatedPins[1].assignedPin = "12";
+GPIO1.associatedPins[2].$name       = "BIN1";
+GPIO1.associatedPins[2].assignedPin = "7";
+GPIO1.associatedPins[3].$name       = "BIN2";
+GPIO1.associatedPins[3].assignedPin = "6";
+
+/*
+ * ======== 以下外设不由 SysConfig 管理 ========
+ *
+ * PWM:
+ *   TIMG12 CC1→PB14 (PWMA), TIMG8 CC0→PA7 (PWMB)
+ *   → 手动在 encoder.c Motor_PWM_Init() 中配置
+ *   原因: PB14 只有 TIMG12_CCP1, SysConfig PWM 模块不支持 CC1-only 配置
+ *
+ * Encoder GPIO:
+ *   PB10/PB11 (左), PB4/PB5 (右)
+ *   → 手动在 encoder.c Encoder_Init() 中配置
+ *
+ * Tracking GPIO (8路灰度):
+ *   PB19/PB17/PA16/PA14/PB20/PB25/PA25/PA27
+ *   → 手动在 tracking.c Tracking_Init() 中配置
+ *   原因: 跨 PORTA/PORTB, SysConfig 不支持一组内跨端口
+ *
+ * TIMG6 (编码器同步定时器):
+ *   → 手动在 encoder.c Encoder_Init() 中配置
+ */
+
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.clockTreeEn  = true;

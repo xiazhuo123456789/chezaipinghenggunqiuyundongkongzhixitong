@@ -1,0 +1,16 @@
+[my test build]
+Compiling all source files:
+  empty_mspm0g3507.c
+  encoder.c
+  key.c
+  oled.c
+  tracking.c
+
+Linking into empty_mspm0g3507.out
+Generating hex: empty_mspm0g3507.hex
+
+Key mapping:
+  K2 (PA21) → 启动循迹
+  K3 (PB18) → 停车
+  K4 (PA17) → 切页
+  K1 (PA23) → 暂不可用
