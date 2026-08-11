@@ -19,7 +19,7 @@
 双表驱动设计：
 1. 页面表 （ pages.c ）： s_page_table[5] 存储每页的 on_key / on_run / on_leave 函数指针，新增页面只需表里加 1 行
 2. 任务配置表 （ task_manager.c ）： s_task_cfg[7] 封装每任务的循迹使能、稳球使能、车速、目标序列
-
+![输入图片说明](%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png)
 
 
 
