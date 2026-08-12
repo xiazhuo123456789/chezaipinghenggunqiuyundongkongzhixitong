@@ -30,9 +30,12 @@ Overall Architecture: Three-Interrupt Layering + Dual Table-Driven Design
 
 #### Instructions
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.槐序（Sherlock Holmes）
+
+2.拾忆
+
+3.哦哦（いずみ さぎり）
+
 
 #### Contribution
 
